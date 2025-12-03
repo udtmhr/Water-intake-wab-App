@@ -50,6 +50,20 @@ button {
     transition: background-color 0.3s;
 }
 
+.logout-btn {
+    background-color: #e74c3c;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    margin-left: 10px;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+}
+
 button:hover {
     background-color: #2980b9;
 }

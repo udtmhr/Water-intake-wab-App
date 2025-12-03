@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +8,21 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="container">
         <header>
             <h1>Water Intake Tracker</h1>
             <button id="settings-btn">Settings</button>
+            <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
         </header>
 
         <main>
             <div class="visualization">
                 <div class="human-silhouette">
                     <div class="water-level" id="water-level"></div>
-                    <img src="{{ url_for('static', filename='human_silhouette.svg') }}" alt="Human Silhouette" class="silhouette-img">
+                    <img src="{{ url_for('static', filename='human_silhouette.svg') }}" alt="Human Silhouette"
+                        class="silhouette-img">
                 </div>
             </div>
 
@@ -64,6 +68,20 @@
                         <option value="female">Female</option>
                     </select>
                 </div>
+
+                <hr>
+                <h3>LINE Notification Settings (Optional)</h3>
+                <div class="form-group">
+                    <label for="line_user_id">LINE User ID</label>
+                    <div style="margin-bottom: 10px; text-align: center;">
+                        <a href="https://lin.ee/B4Uiv7u"><img
+                                src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36"
+                                border="0"></a>
+                    </div>
+                    <input type="text" id="line_user_id" name="line_user_id" placeholder="Uxxxxxxxx...">
+                    <small style="color: #666; font-size: 0.8em;">※公式アカウントを友だち追加し、そこからIDを取得してください（現在は手動入力のみ）。</small>
+                </div>
+
                 <button type="submit">Save & Calculate Goal</button>
             </form>
         </div>
@@ -71,4 +89,5 @@
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
+
 </html>

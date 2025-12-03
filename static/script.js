@@ -10,7 +10,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressPercentageEl = document.getElementById('progress-percentage');
 
     // Modal Logic
-    settingsBtn.onclick = () => settingsModal.style.display = 'block';
+    settingsBtn.onclick = async () => {
+        settingsModal.style.display = 'block';
+        try {
+            const response = await fetch('/api/settings');
+            if (response.ok) {
+                const data = await response.json();
+                if (data.height) document.getElementById('height').value = data.height;
+                if (data.weight) document.getElementById('weight').value = data.weight;
+                if (data.age) document.getElementById('age').value = data.age;
+                if (data.gender) document.getElementById('gender').value = data.gender;
+                if (data.line_user_id) document.getElementById('line_user_id').value = data.line_user_id;
+            }
+        } catch (e) {
+            console.error("Failed to fetch settings", e);
+        }
+    };
     closeBtn.onclick = () => settingsModal.style.display = 'none';
     window.onclick = (event) => {
         if (event.target == settingsModal) {
@@ -57,6 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
     async function updateStatus() {
         try {
             const response = await fetch('/api/status');
+            if (response.status === 401) {
+                window.location.href = '/login';
+                return;
+            }
             const data = await response.json();
 
             if (data.configured) {
