@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Intake Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Water Intake Tracker</h1>
+            <button id="settings-btn">Settings</button>
+        </header>
+
+        <main>
+            <div class="visualization">
+                <div class="human-silhouette">
+                    <div class="water-level" id="water-level"></div>
+                    <img src="{{ url_for('static', filename='human_silhouette.svg') }}" alt="Human Silhouette" class="silhouette-img">
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="label">Current Intake</span>
+                    <span class="value" id="current-intake">0 ml</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">Daily Goal</span>
+                    <span class="value" id="daily-goal">0 ml</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">Progress</span>
+                    <span class="value" id="progress-percentage">0%</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>User Settings</h2>
+            <form id="settings-form">
+                <div class="form-group">
+                    <label for="height">Height (cm)</label>
+                    <input type="number" id="height" name="height" required>
+                </div>
+                <div class="form-group">
+                    <label for="weight">Weight (kg)</label>
+                    <input type="number" id="weight" name="weight" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <button type="submit">Save & Calculate Goal</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

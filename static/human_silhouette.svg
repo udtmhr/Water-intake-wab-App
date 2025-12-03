@@ -1,0 +1,16 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400">
+  <!-- White background with a hole in the shape of a human -->
+  <defs>
+    <mask id="human-mask">
+      <rect x="0" y="0" width="200" height="400" fill="white"/>
+      <!-- The human shape in black will be transparent in the mask -->
+      <path d="M100,50 C115,50 125,60 125,75 C125,90 115,100 100,100 C85,100 75,90 75,75 C75,60 85,50 100,50 Z M100,105 C130,105 150,120 150,150 L150,250 C150,260 140,260 140,250 L140,160 L130,160 L130,350 C130,360 120,360 120,350 L120,260 L80,260 L80,350 C80,360 70,360 70,350 L70,160 L60,160 L60,250 C60,260 50,260 50,250 L50,150 C50,120 70,105 100,105 Z" fill="black"/>
+    </mask>
+  </defs>
+  
+  <!-- Fill the whole area with white, but masked -->
+  <rect x="0" y="0" width="200" height="400" fill="#e0e0e0" mask="url(#human-mask)"/>
+  
+  <!-- Add a border around the human shape for better visibility -->
+  <path d="M100,50 C115,50 125,60 125,75 C125,90 115,100 100,100 C85,100 75,90 75,75 C75,60 85,50 100,50 Z M100,105 C130,105 150,120 150,150 L150,250 C150,260 140,260 140,250 L140,160 L130,160 L130,350 C130,360 120,360 120,350 L120,260 L80,260 L80,350 C80,360 70,360 70,350 L70,160 L60,160 L60,250 C60,260 50,260 50,250 L50,150 C50,120 70,105 100,105 Z" fill="none" stroke="#999" stroke-width="2"/>
+</svg>
